@@ -1,0 +1,65 @@
+# OPTIONAL: real-infrastructure path (RabbitMQ + Jaeger). The system does NOT
+# need Docker to run - `npm run demo` covers everything with the built-in
+# local broker and file span exporter. Use this only if you have Docker and
+# want to see the same code against a real broker and a real trace UI.
+#
+#   docker compose up --build
+#   -> Order API      http://localhost:3000
+#   -> RabbitMQ UI    http://localhost:15672   (guest/guest)
+#   -> Jaeger UI      http://localhost:16686
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "16686:16686" # UI
+      - "4318:4318"   # OTLP/HTTP
+
+  order:
+    build: { context: ., dockerfile: services/order/Dockerfile }
+    environment: &svc-env
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+      SQLITE_DRIVER: node
+      LOG_LEVEL: info
+    ports:
+      - "3000:3000"
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+      jaeger: { condition: service_started }
+
+  inventory:
+    build: { context: ., dockerfile: services/inventory/Dockerfile }
+    environment: *svc-env
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+
+  payment:
+    build: { context: ., dockerfile: services/payment/Dockerfile }
+    environment: *svc-env
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+
+  shipping:
+    build: { context: ., dockerfile: services/shipping/Dockerfile }
+    environment: *svc-env
+    depends_on:
+      rabbitmq: { condition: service_healthy }
+
+  notification:
+    build: { context: ., dockerfile: services/notification/Dockerfile }
+    environment: *svc-env
+    depends_on:
+      rabbitmq: { condition: service_healthy }

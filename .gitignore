@@ -1,0 +1,16 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# runtime data (sqlite files, traces, logs)
+data/
+
+# env
+.env
+
+# OS noise
+.DS_Store
+Thumbs.db

@@ -1,0 +1,31 @@
+{
+  "name": "order-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Event-driven order processing system: saga orchestration, at-least-once delivery, idempotent consumers, distributed tracing.",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "tsc -b --clean && node -e \"require('node:fs').rmSync('data',{recursive:true,force:true})\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo": "npm run build && node packages/demo/dist/demo.js",
+    "broker": "node packages/common/dist/broker/server-main.js",
+    "start:order": "node services/order/dist/main.js",
+    "start:inventory": "node services/inventory/dist/main.js",
+    "start:payment": "node services/payment/dist/main.js",
+    "start:shipping": "node services/shipping/dist/main.js",
+    "start:notification": "node services/notification/dist/main.js"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

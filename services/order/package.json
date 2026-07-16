@@ -1,0 +1,16 @@
+{
+  "name": "@order-system/order-service",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Order service: public REST API + saga orchestrator with compensating transactions.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@order-system/common": "*"
+  }
+}

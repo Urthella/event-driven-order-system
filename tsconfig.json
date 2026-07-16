@@ -1,0 +1,12 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/common" },
+    { "path": "services/order" },
+    { "path": "services/inventory" },
+    { "path": "services/payment" },
+    { "path": "services/shipping" },
+    { "path": "services/notification" },
+    { "path": "packages/demo" }
+  ]
+}

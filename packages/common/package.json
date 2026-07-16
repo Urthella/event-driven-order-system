@@ -1,0 +1,27 @@
+{
+  "name": "@order-system/common",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared kernel: event contracts, broker interface + local/RabbitMQ adapters, transactional-inbox idempotency helper, OpenTelemetry setup.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/core": "^2.9.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.220.0",
+    "@opentelemetry/resources": "^2.9.0",
+    "@opentelemetry/sdk-trace-base": "^2.9.0",
+    "@opentelemetry/sdk-trace-node": "^2.9.0",
+    "@opentelemetry/semantic-conventions": "^1.43.0",
+    "amqplib": "^0.10.9"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^12.11.1"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.8"
+  }
+}

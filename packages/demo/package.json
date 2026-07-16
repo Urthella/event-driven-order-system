@@ -1,0 +1,13 @@
+{
+  "name": "@order-system/demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "End-to-end demo: boots broker + all 5 services as child processes, runs saga scenarios, prints a report.",
+  "main": "dist/demo.js",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@order-system/common": "*"
+  }
+}
