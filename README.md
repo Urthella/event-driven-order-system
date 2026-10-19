@@ -1,5 +1,16 @@
 # Event-Driven Order Processing System
 
+<!-- badges -->
+[![Stars](https://img.shields.io/github/stars/Urthella/event-driven-order-system?style=flat-square&logo=github)](https://github.com/Urthella/event-driven-order-system)
+[![Last commit](https://img.shields.io/github/last-commit/Urthella/event-driven-order-system?style=flat-square)](https://github.com/Urthella/event-driven-order-system/commits/main)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white)
+![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-425CC7?style=flat-square&logo=opentelemetry&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=vitest&logoColor=white)
+
 Five Node.js/TypeScript microservices coordinating an order saga over a message
 broker - with **compensating transactions**, **consumer idempotency under
 at-least-once delivery**, **out-of-order tolerance**, and **distributed tracing**
@@ -308,3 +319,16 @@ npm test
   test of the inbox/outbox crash-recovery contract.
 - `out-of-order.test.ts` - stale `shipping.created` / `payment.charged`
   after cancellation are ignored; unknown-order events don't poison anything.
+
+---
+
+## Related projects
+
+Part of my backend and distributed-systems series:
+
+- [**realtime-collab-editor**](https://github.com/Urthella/realtime-collab-editor): CRDT sync over WebSockets, live presence, debounced persistence
+- [**distributed-rate-limiter**](https://github.com/Urthella/distributed-rate-limiter): token bucket, sliding window and fixed window limits with atomic Redis Lua
+- [**rag-codebase-qa**](https://github.com/Urthella/rag-codebase-qa): AST-aware chunking, hybrid BM25 + vector retrieval, cited answers
+- [**job-queue-orchestrator**](https://github.com/Urthella/job-queue-orchestrator): race-safe job claiming, retries with backoff, dead-letter queue, DAG workflows
+
+More of my work: [github.com/Urthella](https://github.com/Urthella) · [utkudemirtas.tech](https://www.utkudemirtas.tech)
