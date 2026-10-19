@@ -1,6 +1,7 @@
 # Event-Driven Order Processing System
 
 <!-- badges -->
+[![CI](https://github.com/Urthella/event-driven-order-system/actions/workflows/ci.yml/badge.svg)](https://github.com/Urthella/event-driven-order-system/actions/workflows/ci.yml)
 [![Stars](https://img.shields.io/github/stars/Urthella/event-driven-order-system?style=flat-square&logo=github)](https://github.com/Urthella/event-driven-order-system)
 [![Last commit](https://img.shields.io/github/last-commit/Urthella/event-driven-order-system?style=flat-square)](https://github.com/Urthella/event-driven-order-system/commits/main)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
